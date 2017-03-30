@@ -8,6 +8,19 @@
   <h2>Записаться</h2>
   <p>На этой странице вы сможете записаться к нам в Barber Shop</p>
 
+<script type="text/javascript">
+
+$(function() {
+
+  // тут можно написать любой javascript код
+  // который исполнится после загрузки страницы
+
+  $('#color').simplecolorpicker();
+  //$(alert ('aaa'));
+});
+
+</script>
+
 <form action="/visit" method="POST" role="form">
 
   <div class="form-group">
@@ -33,6 +46,8 @@
       <option>Gas</option>
     </select>
   </div>
+
+
   <div class="form-group">
   <label>Выберите цвет краски</label>
     <select id="color" name="color">
@@ -54,9 +69,7 @@
 
 </form>
 
-<script type="text/javascript">
-$('#color').simplecolorpicker();
-</script>
+
 
 </body>
 </html>
