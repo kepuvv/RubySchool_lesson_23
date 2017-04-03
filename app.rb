@@ -14,6 +14,10 @@ get '/visit' do
 	erb :visit
 end
 
+get '/contacts' do
+	erb :contacts
+end
+
 post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]
