@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'pony'
 
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
@@ -42,4 +43,11 @@ post '/visit' do
 
 		erb "OK!, username is #{@username}, #{@phone}, #{@date}, #{@barber_id}, #{color}"
 	
+end
+
+post '/contacts' do
+  
+  #Pony.mail()
+ 
+ erb "Ok, message send"
 end
