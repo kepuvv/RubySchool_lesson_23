@@ -56,7 +56,7 @@ post '/visit' do
 	end
 
 
-		erb "OK!, username is #{@username}, #{@phone}, #{@date}, #{@barber_id}, #{color}"
+	erb "OK!, username is #{@username}, #{@phone}, #{@date}, #{@barber_id}, #{color}"
 	
 end
 
