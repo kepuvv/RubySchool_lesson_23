@@ -41,6 +41,8 @@ post '/visit' do
 	@barber_id = params[:barber_id]
 	color = params[:color]
 
+	# автозаполнение введенных полей при повтороном вводе
+
 	hh = { 	:username => 'Введите имя', 
 			:phone => 'Введите телефон', 
 			:datetime => 'Выберите дату' }
@@ -55,6 +57,15 @@ post '/visit' do
 		end 
 	end
 
+	@db.execute  'insert into users 
+		(
+		username,
+		phone,
+		tadestamp,
+		barber,
+		color
+		)
+		values (?,?,?,?,?)', [@username, @phone, @date, @barber_id, color]
 
 	erb "OK!, username is #{@username}, #{@phone}, #{@date}, #{@barber_id}, #{color}"
 	
