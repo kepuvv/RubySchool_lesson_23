@@ -16,6 +16,8 @@ $(function() {
   // который исполнится после загрузки страницы
 
   $('#color').simplecolorpicker();
+
+  $('#datetimepicker').datetimepicker();
   //$(alert ('aaa'));
 });
 
@@ -35,7 +37,7 @@ $(function() {
 
   <div class="form-group">
     <label>Когда вас ждать?</label>
-    <input name="datetime" type="text" class="form-control" value="<%=@date%>" placeholder="Введите дату и время">
+    <input id="datetimepicker" name="datetime" type="text" class="form-control" value="<%=@date%>" placeholder="Введите дату и время">
   </div>
   
   <div class="form-group">
