@@ -44,7 +44,7 @@ $(function() {
     <label>Выберите барбера</label>
     <select name="barber" class="form-control">
       <% @barbers.each do |row| %>
-      <option><%= row['name'] %></option>
+        <option <%= @barber == row['name'] ? 'selected' : '' %> ><%= row['name'] %></option>
       <% end %>
     </select>
   </div>
