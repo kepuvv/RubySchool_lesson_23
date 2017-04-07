@@ -61,6 +61,10 @@ get '/about' do
 end
 
 get '/visit' do
+	db = get_db
+
+	@barbers = db.execute 'select * from barbers'
+
 	erb :visit
 end
 
@@ -80,8 +84,12 @@ post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]
 	@date = params[:datetime]
-	@barber = params[:barber]
 	color = params[:color]
+	@barber = params[:barber]
+
+	db = get_db
+
+	@barbers = db.execute 'select * from barbers'
 
 	# автозаполнение введенных полей при повтороном вводе
 

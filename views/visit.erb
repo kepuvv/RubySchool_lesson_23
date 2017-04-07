@@ -43,9 +43,9 @@ $(function() {
   <div class="form-group">
     <label>Выберите барбера</label>
     <select name="barber" class="form-control">
-      <option <%= @barber == 'WW' ? 'selected' : '' %> >WW</option>
-      <option <%= @barber == 'Jessie Pinkman' ? 'selected' : 'huy' %> >Jessie Pinkman</option>
-      <option <%= @barber == 'Gas' ? 'selected' : '' %> >Gas</option>
+      <% @barbers.each do |row| %>
+      <option><%= row['name'] %></option>
+      <% end %>
     </select>
   </div>
 
