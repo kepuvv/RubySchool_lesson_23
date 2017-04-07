@@ -10,6 +10,24 @@ def get_db
 	return db
 end
 
+barber_names = [ 'WW', 'Jessie Pinkman', 'Gas' ]
+
+def is_barber_exist? db, name
+	db.execute('select * from barbers where name=?',[name]).length > 0
+end
+
+def add_barber db, barbers
+	barbers.each do |barber|
+		if !is_barber_exist? db, barber
+			db.execute 'insert into barbers 
+				(
+					name
+				)
+				values (?)', [barber]
+		end
+	end
+end
+
 configure do
 	db = get_db
 	db.execute 'CREATE TABLE IF NOT EXISTS
@@ -21,7 +39,17 @@ configure do
 			"datestamp" TEXT,
 			"barber" TEXT,
 			"color" TEXT
-		)'	
+		)'
+
+	db.execute 'CREATE TABLE IF NOT EXISTS
+		"barbers"
+		(
+			"barber_id" INTEGER PRIMARY KEY AUTOINCREMENT,
+			"name" TEXT
+		)'
+
+	add_barber db, barber_names	
+
 end
 
 get '/' do
@@ -52,7 +80,7 @@ post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]
 	@date = params[:datetime]
-	@barber_id = params[:barber_id]
+	@barber = params[:barber]
 	color = params[:color]
 
 	# автозаполнение введенных полей при повтороном вводе
@@ -80,9 +108,9 @@ post '/visit' do
 			barber,
 			color
 		)
-		values (?,?,?,?,?)', [@username, @phone, @date, @barber_id, color]
+		values (?,?,?,?,?)', [@username, @phone, @date, @barber, color]
 
-	erb "OK!, username is #{@username}, #{@phone}, #{@date}, #{@barber_id}, #{color}"
+	erb "OK!, username is #{@username}, #{@phone}, #{@date}, #{@barber}, #{color}"
 	
 end
 

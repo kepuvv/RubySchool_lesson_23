@@ -42,10 +42,10 @@ $(function() {
   
   <div class="form-group">
     <label>Выберите барбера</label>
-    <select name="barber_id" class="form-control">
-      <option <%= @barber_id == 'WW' ? 'selected' : '' %> >WW</option>
-      <option <%= @barber_id == 'Jessie Pinkman' ? 'selected' : 'huy' %> >Jessie Pinkman</option>
-      <option <%= @barber_id == 'Gas' ? 'selected' : '' %> >Gas</option>
+    <select name="barber" class="form-control">
+      <option <%= @barber == 'WW' ? 'selected' : '' %> >WW</option>
+      <option <%= @barber == 'Jessie Pinkman' ? 'selected' : 'huy' %> >Jessie Pinkman</option>
+      <option <%= @barber == 'Gas' ? 'selected' : '' %> >Gas</option>
     </select>
   </div>
 
