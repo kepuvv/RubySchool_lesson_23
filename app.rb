@@ -61,6 +61,10 @@ get '/about' do
 end
 
 get '/visit' do
+	db = get_db
+
+	@barbers = db.execute 'select * from barbers'
+
 	erb :visit
 end
 
@@ -80,8 +84,12 @@ post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]
 	@date = params[:datetime]
-	@barber_id = params[:barber_id]
 	color = params[:color]
+	@barber = params[:barber]
+
+	db = get_db
+
+	@barbers = db.execute 'select * from barbers'
 
 	# автозаполнение введенных полей при повтороном вводе
 
@@ -108,9 +116,9 @@ post '/visit' do
 			barber,
 			color
 		)
-		values (?,?,?,?,?)', [@username, @phone, @date, @barber_id, color]
+		values (?,?,?,?,?)', [@username, @phone, @date, @barber, color]
 
-	erb "OK!, username is #{@username}, #{@phone}, #{@date}, #{@barber_id}, #{color}"
+	erb "OK!, username is #{@username}, #{@phone}, #{@date}, #{@barber}, #{color}"
 	
 end
 
