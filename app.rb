@@ -107,6 +107,9 @@ post '/visit' do
 		end 
 	end
 
+	# Можно объединить сообщения об ошибках
+	# @error = hh.select { |key,_| params[key] == '' }.values.join(",")
+
 	db = get_db
 	db.execute 'insert into users 
 		(
