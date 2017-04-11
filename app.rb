@@ -73,11 +73,11 @@ get '/contacts' do
 end
 
 get '/showusers' do
-	db = get_db
 
-	@result = db.execute 'select * from Users order by id desc'
+	# erb :showusers
+	
+	erb :login
 
-	erb :showusers
 end
 
 post '/visit' do
@@ -130,4 +130,22 @@ post '/contacts' do
   #Pony.mail()
  
  erb "Ok, message send"
+end
+
+post '/showusers' do
+
+	db = get_db
+
+	@result = db.execute 'select * from Users order by id desc'
+
+	name = params[:login]
+	password = params[:password]
+
+	if name == 'admin' && password == '123456'
+		erb :showusers
+
+	else
+		@error = 'Acces denied!'
+		erb :login
+	end 
 end
