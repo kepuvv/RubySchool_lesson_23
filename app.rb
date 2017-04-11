@@ -121,7 +121,7 @@ post '/visit' do
 		)
 		values (?,?,?,?,?)', [@username, @phone, @date, @barber, color]
 
-	erb "OK!, username is #{@username}, #{@phone}, #{@date}, #{@barber}, #{color}"
+	erb "<h2>Спасибо! Вы записались #{@date}</h2>"
 	
 end
 
